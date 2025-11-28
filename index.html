@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ATS Optimizer AI - Resume Toolkit</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>ATS Optimizer AI</h1>
+    <p>Score your resume, target it to a job, and scan keywords so it passes ATS and reaches a human.</p>
+  </header>
+
+  <nav class="nav">
+    <button class="nav-btn active" data-target="score-tool">Score My Resume</button>
+    <button class="nav-btn" data-target="target-tool">Targeted Resume</button>
+    <button class="nav-btn" data-target="keyword-tool">Keyword Scanner</button>
+  </nav>
+
+  <main class="container">
+    <!-- Score My Resume -->
+    <section id="score-tool" class="tool-section active">
+      <h2>Score My Resume</h2>
+      <p>Paste your resume and get an overall score, bullet strength, and ATS formatting checks.</p>
+      <textarea id="score-resume-input" placeholder="Paste your resume here..."></textarea>
+      <button id="score-resume-btn">Score My Resume</button>
+
+      <div id="score-results" class="results-card"></div>
+    </section>
+
+    <!-- Targeted Resume -->
+    <section id="target-tool" class="tool-section">
+      <h2>Targeted Resume</h2>
+      <p>Paste a job description and your resume to see how well they match.</p>
+      <div class="split">
+        <div class="split-column">
+          <h3>Job Description</h3>
+          <textarea id="target-jd-input" placeholder="Paste job description here..."></textarea>
+        </div>
+        <div class="split-column">
+          <h3>Your Resume</h3>
+          <textarea id="target-resume-input" placeholder="Paste your resume here..."></textarea>
+        </div>
+      </div>
+      <button id="target-scan-btn">Scan Match</button>
+
+      <div id="target-results" class="results-card"></div>
+    </section>
+
+    <!-- Keyword Scanner -->
+    <section id="keyword-tool" class="tool-section">
+      <h2>Keyword Scanner</h2>
+      <p>Extract important skills, tools, and domain keywords from a job description.</p>
+      <textarea id="keyword-jd-input" placeholder="Paste job description here..."></textarea>
+      <button id="keyword-scan-btn">Scan Keywords</button>
+
+      <div id="keyword-results" class="results-card"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Built by Varun - where Product, AI, and job search meet.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
