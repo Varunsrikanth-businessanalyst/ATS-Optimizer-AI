@@ -169,3 +169,229 @@ button:hover {
   font-size: 0.8rem;
   color: #6b7280;
 }
+
+/* NEW HERO AND PREVIEW STYLES (OVERRIDES COME AFTER ORIGINALS) */
+
+body {
+  background: radial-gradient(circle at top, #1f2937 0, #020617 55%, #000 100%);
+  color: #e5e7eb;
+  line-height: 1.5;
+}
+
+/* Hero layout */
+
+.hero {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-content {
+  flex: 1.1;
+  min-width: 260px;
+}
+
+.hero-content h1 {
+  font-size: 2.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 0.98rem;
+  color: #d1d5db;
+  max-width: 520px;
+  margin-bottom: 1rem;
+}
+
+.hero-bullets {
+  list-style: none;
+  margin-bottom: 1.1rem;
+}
+
+.hero-bullets li {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  margin-bottom: 0.35rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.hero-bullets li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #4ade80;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  border-radius: 999px;
+  padding: 0.65rem 1.4rem;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: #022c22;
+}
+
+.btn-primary:hover {
+  opacity: 0.93;
+}
+
+.btn-secondary {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid #374151;
+  color: #e5e7eb;
+}
+
+.btn-secondary:hover {
+  background: #020617;
+}
+
+.hero-footnote {
+  font-size: 0.78rem;
+  color: #6b7280;
+}
+
+/* Right side preview */
+
+.hero-preview {
+  flex: 1;
+  min-width: 280px;
+  display: flex;
+  justify-content: center;
+}
+
+.preview-card {
+  width: 100%;
+  max-width: 360px;
+  background: rgba(15, 23, 42, 0.95);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.preview-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  margin-bottom: 0.4rem;
+}
+
+.preview-score-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.preview-score-circle {
+  width: 96px;
+  height: 96px;
+  border-radius: 999px;
+  border: 5px solid rgba(249, 115, 22, 0.7);
+  border-top-color: rgba(251, 191, 36, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.preview-score-number {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.preview-score-text {
+  font-size: 0.7rem;
+  color: #9ca3af;
+}
+
+.preview-score-copy {
+  font-size: 0.8rem;
+  color: #d1d5db;
+}
+
+.preview-highlight {
+  margin-top: 0.35rem;
+  color: #fbbf24;
+}
+
+.preview-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.preview-chip {
+  background: #020617;
+  border-radius: 0.6rem;
+  padding: 0.4rem 0.45rem;
+  border: 1px solid #1f2937;
+}
+
+.preview-chip-label {
+  font-size: 0.7rem;
+  color: #9ca3af;
+}
+
+.preview-chip-value {
+  font-size: 0.82rem;
+  font-weight: 500;
+  display: block;
+}
+
+.preview-chip-tag {
+  font-size: 0.7rem;
+}
+
+.tag-good {
+  color: #4ade80;
+}
+
+.tag-warn {
+  color: #fbbf24;
+}
+
+.tag-ok {
+  color: #38bdf8;
+}
+
+.preview-checklist {
+  list-style: none;
+  font-size: 0.78rem;
+  color: #9ca3af;
+}
+
+.preview-checklist li {
+  margin-bottom: 0.2rem;
+}
+
+/* Updated nav spacing to work with hero */
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem 1.25rem;
+  flex-wrap: wrap;
+}
