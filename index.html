@@ -6,9 +6,74 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="header">
-    <h1>ATS Optimizer AI</h1>
-    <p>Optimise your resume for ATS. Supercharge your resume with AI. Get interviews.</p>
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Beat the ATS. Get shortlisted more.</h1>
+      <p class="hero-subtitle">
+        ATS Optimizer AI scores your resume, matches it to any job, and shows missing
+        keywords so you can reach a human instead of a filter.
+      </p>
+
+      <ul class="hero-bullets">
+        <li>Instant resume score on a 100 point scale</li>
+        <li>Job match score for any pasted JD</li>
+        <li>Keyword and ATS formatting insights</li>
+      </ul>
+
+      <div class="hero-ctas">
+        <button class="btn-primary" onclick="document.getElementById('score-tool').scrollIntoView({behavior: 'smooth'});">
+          Start scoring my resume
+        </button>
+        <button class="btn-secondary" onclick="document.getElementById('target-tool').scrollIntoView({behavior: 'smooth'});">
+          Try targeted match
+        </button>
+      </div>
+
+      <p class="hero-footnote">
+        No login. No upload. Just paste your resume and job description.
+      </p>
+    </div>
+
+    <div class="hero-preview">
+      <div class="preview-card">
+        <p class="preview-label">Sample report</p>
+        <div class="preview-score-row">
+          <div class="preview-score-circle">
+            <span class="preview-score-number">78</span>
+            <span class="preview-score-text">Overall score</span>
+          </div>
+          <div class="preview-score-copy">
+            <p>Your resume is strong but missing a few key skills for this role.</p>
+            <p class="preview-highlight">Add 4 keywords and rewrite 2 bullets to improve your match.</p>
+          </div>
+        </div>
+
+        <div class="preview-breakdown">
+          <div class="preview-chip">
+            <span class="preview-chip-label">Impact</span>
+            <span class="preview-chip-value">90 / 100</span>
+            <span class="preview-chip-tag tag-good">Excellent</span>
+          </div>
+          <div class="preview-chip">
+            <span class="preview-chip-label">Brevity</span>
+            <span class="preview-chip-value">65 / 100</span>
+            <span class="preview-chip-tag tag-warn">Can be tighter</span>
+          </div>
+          <div class="preview-chip">
+            <span class="preview-chip-label">ATS health</span>
+            <span class="preview-chip-value">72 / 100</span>
+            <span class="preview-chip-tag tag-ok">Safe</span>
+          </div>
+        </div>
+
+        <ul class="preview-checklist">
+          <li>✓ Strong action verbs in most bullets</li>
+          <li>✓ Clear sections for Experience, Education, Skills</li>
+          <li>✗ Missing SQL and stakeholder keywords from the JD</li>
+          <li>✗ Two bullets have no numbers or business impact</li>
+        </ul>
+      </div>
+    </div>
   </header>
 
   <nav class="nav">
@@ -59,7 +124,7 @@
   </main>
 
   <footer class="footer">
-    <p>Built by Varun - where AI Products and job search meet.</p>
+    <p>Built by Varun - where AI products and job search meet.</p>
   </footer>
 
   <script src="script.js"></script>
