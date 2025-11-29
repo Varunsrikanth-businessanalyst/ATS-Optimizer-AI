@@ -43,7 +43,7 @@
         </div>
 
         <p class="hero-footnote">
-          No login. No upload. Just paste your resume and job description.
+          No login. No upload to a server. Everything runs in your browser.
         </p>
       </div>
 
@@ -104,9 +104,40 @@
     <!-- Score My Resume -->
     <section id="score-tool" class="tool-section active">
       <h2>Score My Resume</h2>
-      <p>Paste your resume and get an overall score, bullet strength, and ATS formatting checks.</p>
-      <textarea id="score-resume-input" placeholder="Paste your resume here..."></textarea>
-      <button id="score-resume-btn">Score My Resume</button>
+      <p>Upload or paste your resume and get an overall score, bullet strength, and ATS formatting checks.</p>
+
+      <div class="tool-layout">
+        <div class="tool-input">
+          <label class="field-label" for="score-resume-file">Upload your resume (PDF, Word or text)</label>
+          <input
+            type="file"
+            id="score-resume-file"
+            class="file-input"
+            accept=".pdf,.doc,.docx,.txt"
+          />
+          <p class="field-help">
+            Your file is read locally in the browser. It is not sent to any server.
+          </p>
+
+          <label class="field-label" for="score-resume-input">Or paste your resume below</label>
+          <textarea id="score-resume-input" placeholder="Paste your resume here..."></textarea>
+
+          <button id="score-resume-btn">Score My Resume</button>
+        </div>
+
+        <aside class="tool-sidebar">
+          <h3>What this score looks at</h3>
+          <ul>
+            <li>Are your bullets using strong action verbs</li>
+            <li>Do you quantify impact with numbers</li>
+            <li>Is the formatting friendly for ATS parsing</li>
+          </ul>
+          <p class="sidebar-note">
+            This is a lightweight, educational score. It won’t be perfect, but it will highlight obvious fixes
+            before you apply.
+          </p>
+        </aside>
+      </div>
 
       <div id="score-results" class="results-card"></div>
     </section>
