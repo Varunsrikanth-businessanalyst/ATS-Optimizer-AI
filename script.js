@@ -29,48 +29,115 @@ function setupTabs() {
 
 /* ---------------- SHARED KEYWORD LOGIC ---------------- */
 
-// Basic English stopwords + extra job-posting fluff words
+/*
+  STOPWORDS: common English + job-posting fluff words we NEVER want
+  to show as "ATS keywords".
+*/
 const STOPWORDS = new Set([
-  "the", "and", "for", "with", "from", "that", "this", "have", "has", "had",
-  "was", "were", "are", "is", "been", "being", "will", "would", "can", "could",
-  "should", "into", "over", "under", "about", "above", "more", "most", "much",
-  "many", "some", "any", "each", "other", "every", "across", "such", "very",
-  "your", "you", "our", "their", "they", "them", "we", "us", "his", "her",
-  "its", "who", "whom", "which", "what", "when", "where", "why", "how",
+  // basic English
+  "the","and","for","with","from","that","this","have","has","had",
+  "was","were","are","is","been","being","will","would","can","could",
+  "should","into","over","under","about","above","more","most","much",
+  "many","some","any","each","other","every","across","such","very",
+  "your","you","our","their","they","them","we","us","his","her",
+  "its","who","whom","which","what","when","where","why","how",
+  "while","than","then","there","here","also","just","like","well",
 
-  // Job-posting filler that we do NOT want as "ATS keywords"
-  "benefit", "benefits",
-  "employee", "employees",
-  "owner", "owners",
-  "company", "companies",
-  "salary", "salaries",
-  "result", "results",
-  "experience", "experiences",
-  "including", "include", "includes",
-  "small", "large",
-  "first", "range", "entire", "everything",
-  "independent", "starting", "dependent",
-  "role", "team", "teams",
-  "environment", "environments",
-  "across", "throughout"
+  // job / HR fluff
+  "benefit","benefits",
+  "employee","employees",
+  "owner","owners",
+  "company","companies",
+  "salary","salaries",
+  "result","results",
+  "experience","experiences",
+  "including","include","includes",
+  "small","large",
+  "first","range","entire","everything",
+  "independent","starting","dependent",
+  "role","team","teams",
+  "environment","environments",
+  "across","throughout",
+
+  // very generic words from your bad lists
+  "ability","able","accomplish","accountability",
+  "action","actions","actionable","actively",
+  "adapt","admins","adopt","affirmative",
+  "agency","agreement",
+  "ambitious","applicant","applicants",
+  "approved","attendance","attention",
+  "balancing","base","beauty","become","before",
+  "behavior","believe","best","bets","beyond",
+  "blockers","bonding","bonds","both",
+  "brand","brings"
 ]);
 
+/*
+  SKILL_WHITELIST: words that are often real ATS keywords even if
+  they only appear once in the JD (skills, tools, domains).
+*/
+const SKILL_WHITELIST = new Set([
+  // product / growth / experimentation
+  "product","products","roadmap","roadmaps","backlog","backlogs",
+  "experiment","experiments","experimentation","hypothesis",
+  "ab","testing","tests","test","conversion","conversions",
+  "retention","activation","acquisition","funnel","funnels",
+  "cohort","cohorts","churn","lifecycle","pricing","monetization",
+
+  // analytics / data
+  "analytics","analyst","analysis","sql","python","tableau",
+  "powerbi","looker","dashboards","dashboard","metrics","kpis",
+  "dataset","datasets","statistics","statistical","models","modeling",
+  "segmentation","forecasting","prediction","predictive",
+
+  // pm / delivery
+  "stakeholder","stakeholders","requirements","user","users",
+  "personas","journeys","workflow","workflows","prioritize","prioritization",
+  "agile","scrum","kanban","sprints","backlog","grooming",
+  "delivery","execution","discovery","roadmap","initiative","initiatives",
+
+  // domains you commonly see
+  "fintech","platform","platforms","saas","b2b","b2c",
+  "booking","bookings","payment","payments","wallet",
+  "subscription","subscriptions","marketplace","marketplaces",
+
+  // misc tech / tools
+  "aws","azure","gcp","api","apis","microservices",
+  "kubernetes","docker","airflow","dbt","snowflake"
+]);
+
+/*
+  Extract keywords from text:
+    - lowercases
+    - keeps only alphabetic chunks
+    - builds frequency map
+    - keeps word if:
+        length >= 4
+        NOT in STOPWORDS
+        AND (freq >= 2 OR in SKILL_WHITELIST)
+*/
 function extractKeywords(text) {
   if (!text) return new Set();
 
-  // Split on anything that isn't a letter
   const rawWords = text
     .toLowerCase()
     .split(/[^a-z]+/g)
     .filter(Boolean);
 
+  const freq = {};
+  rawWords.forEach((w) => {
+    freq[w] = (freq[w] || 0) + 1;
+  });
+
   const keywords = new Set();
 
-  rawWords.forEach((word) => {
-    if (word.length < 4) return;           // ignore tiny words
-    if (STOPWORDS.has(word)) return;       // ignore stopwords
+  Object.entries(freq).forEach(([word, count]) => {
+    if (word.length < 4) return;
+    if (STOPWORDS.has(word)) return;
 
-    keywords.add(word);
+    if (count >= 2 || SKILL_WHITELIST.has(word)) {
+      keywords.add(word);
+    }
   });
 
   return keywords;
@@ -92,7 +159,6 @@ function setupScoreMyResume() {
       return;
     }
 
-    // Simple heuristics: word count, bullet count, action verbs, length etc.
     const words = text.split(/\s+/).filter(Boolean);
     const wordCount = words.length;
 
@@ -105,10 +171,10 @@ function setupScoreMyResume() {
     const bulletCount = bulletLines.length;
 
     const actionVerbs = [
-      "led", "own", "owned", "drive", "drove", "launched",
-      "built", "created", "designed", "improved", "optimized",
-      "delivered", "managed", "implemented", "increased",
-      "reduced", "grew", "shipped"
+      "led","own","owned","drive","drove","launched",
+      "built","created","designed","improved","optimized",
+      "delivered","managed","implemented","increased",
+      "reduced","grew","shipped","scaled"
     ];
 
     let strongBullets = 0;
@@ -117,7 +183,10 @@ function setupScoreMyResume() {
       if (actionVerbs.some((v) => lower.includes(v))) strongBullets += 1;
     });
 
-    const impactScore = Math.min(100, Math.round((strongBullets / Math.max(1, bulletCount)) * 100) || 40);
+    const impactScore = Math.min(
+      100,
+      Math.round((strongBullets / Math.max(1, bulletCount)) * 100) || 40
+    );
     const brevityScore = estimateBrevityScore(lines);
     const atsHealthScore = estimateAtsHealthScore(text);
 
@@ -147,14 +216,12 @@ function estimateBrevityScore(lines) {
   const avgLength =
     nonEmpty.reduce((sum, l) => sum + l.trim().length, 0) / nonEmpty.length;
 
-  // Aim for 60–120 characters per bullet.
   if (avgLength < 60) return 65;
   if (avgLength > 160) return 55;
   return 85;
 }
 
 function estimateAtsHealthScore(text) {
-  // Very rough checks: avoid tables, avoid images, encourage plain text.
   let score = 80;
 
   if (text.includes("\t")) score -= 10;
@@ -231,7 +298,7 @@ function renderTargetedMatchResult(score, matched, missing) {
 
     <p style="margin-top:0.75rem; font-size:0.85rem; color:#6b7280;">
       Tip: Only add keywords that are genuinely true for your experience. Focus on skill, tool, and domain
-      keywords from the JD &ndash; not random buzzwords.
+      keywords from the JD – not random filler words.
     </p>
   `;
 }
