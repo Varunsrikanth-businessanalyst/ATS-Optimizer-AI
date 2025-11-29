@@ -13,7 +13,7 @@ body {
   line-height: 1.5;
 }
 
-/* TOPBAR + HERO WRAPPER (similar structure to Resume Worded) */
+/* TOPBAR + HERO WRAPPER */
 
 .site-header {
   padding: 1.25rem 2.5rem 2.5rem;
@@ -24,36 +24,27 @@ body {
 .topbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-bottom: 2rem;
 }
 
-.logo {
+/* clickable logo button that acts as "home" */
+
+.logo-btn {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  border-radius: 999px;
+  padding: 0.45rem 1rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   color: #e5e7eb;
-}
-
-.topnav {
-  display: flex;
-  gap: 1.5rem;
-  font-size: 0.85rem;
-  color: #c4b5fd;
-}
-
-.topnav-link {
   cursor: pointer;
-  opacity: 0.85;
 }
 
-.topnav-link:hover {
-  opacity: 1;
-}
-
-.login-link {
-  color: #e5e7eb;
+.logo-btn:hover {
+  background: rgba(15, 23, 42, 0.7);
 }
 
 /* HERO LAYOUT */
@@ -74,8 +65,8 @@ body {
 }
 
 .hero-content h1 {
-  font-size: 2.6rem;
-  margin-bottom: 0.75rem;
+  font-size: 2.4rem;
+  margin-bottom: 0.8rem;
 }
 
 .hero-subtitle {
@@ -147,7 +138,7 @@ body {
   color: #cbd5f5;
 }
 
-/* HERO RIGHT PREVIEW – more like Resume Worded */
+/* HERO RIGHT PREVIEW */
 
 .hero-preview {
   flex: 1;
@@ -269,7 +260,7 @@ body {
   margin-bottom: 0.25rem;
 }
 
-/* TOOL NAV (button tabs under hero) */
+/* TOOL NAV */
 
 .nav {
   display: flex;
@@ -327,7 +318,7 @@ body {
   margin-bottom: 1rem;
 }
 
-/* TEXTAREAS + BUTTONS */
+/* TEXTAREA + BUTTONS */
 
 textarea {
   width: 100%;
