@@ -6,20 +6,21 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- TOP BAR + HERO (like Resume Worded layout) -->
+  <!-- TOP BAR + HERO -->
   <header class="site-header">
     <div class="topbar">
-      <div class="logo">ATS Optimizer AI</div>
-      <nav class="topnav">
-        <span class="topnav-link">Product</span>
-        <span class="topnav-link">How it works</span>
-        <span class="topnav-link login-link">Login</span>
-      </nav>
+      <!-- Logo button: refreshes page / goes "home" -->
+      <button class="logo-btn" onclick="window.location.href = window.location.pathname;">
+        ATS Optimizer AI
+      </button>
     </div>
 
     <div class="hero">
       <div class="hero-content">
-        <h1>Beat the ATS. Get shortlisted more.</h1>
+        <h1>
+          Optimise your resume for ATS.<br />
+          Supercharge your resume with AI. Get interviews.
+        </h1>
         <p class="hero-subtitle">
           ATS Optimizer AI scores your resume, matches it to any job, and shows missing
           keywords so you can reach a human instead of a filter.
@@ -91,7 +92,7 @@
     </div>
   </header>
 
-  <!-- TOOL TABS (below hero, like their “down” section) -->
+  <!-- TOOL TABS -->
   <nav class="nav">
     <button class="nav-btn active" data-target="score-tool">Score My Resume</button>
     <button class="nav-btn" data-target="target-tool">Targeted Resume</button>
