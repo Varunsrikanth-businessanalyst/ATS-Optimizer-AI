@@ -156,7 +156,7 @@ button:hover {
   color: #6b7280;
 }
 
-/* HERO RIGHT PREVIEW – nicer card */
+/* HERO RIGHT PREVIEW – polished card */
 
 .hero-preview {
   flex: 1;
@@ -173,8 +173,17 @@ button:hover {
   padding: 1.6rem 1.7rem;
   box-shadow:
     0 24px 60px rgba(15, 23, 42, 0.06),
-    0 0 0 1px #f3f4f6; /* soft border */
+    0 0 0 1px #f3f4f6;
   color: #111827;
+  position: relative;
+}
+
+.preview-card::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  background: radial-gradient(circle at top left, rgba(249, 115, 22, 0.12), transparent 55%);
+  z-index: -1;
 }
 
 .preview-label {
@@ -345,6 +354,71 @@ button:hover {
   margin-bottom: 1rem;
 }
 
+/* TOOL LAYOUT – Score My Resume */
+
+.tool-layout {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.tool-input {
+  flex: 1.4;
+  min-width: 260px;
+}
+
+.tool-sidebar {
+  flex: 0.9;
+  min-width: 230px;
+  background: #f9fafb;
+  border-radius: 0.9rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid #e5e7eb;
+  font-size: 0.88rem;
+}
+
+.tool-sidebar h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+}
+
+.tool-sidebar ul {
+  padding-left: 1.1rem;
+  margin-bottom: 0.6rem;
+}
+
+.tool-sidebar li {
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-note {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* FIELDS */
+
+.field-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #111827;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.field-help {
+  font-size: 0.8rem;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+}
+
+.file-input {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.85rem;
+}
+
 /* TEXTAREA */
 
 textarea {
@@ -376,7 +450,7 @@ textarea {
 /* RESULTS CARD */
 
 .results-card {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   border-radius: 0.75rem;
   border: 1px solid #e5e7eb;
   background: #f9fafb;
@@ -431,4 +505,20 @@ textarea {
   padding: 1rem;
   font-size: 0.8rem;
   color: #6b7280;
+}
+
+/* RESPONSIVE TWEAKS */
+
+@media (max-width: 768px) {
+  .site-header {
+    padding: 1.25rem 1.25rem 2rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .preview-card {
+    max-width: 100%;
+  }
 }
