@@ -8,8 +8,8 @@
 }
 
 body {
-  background: radial-gradient(circle at top left, #4c1d95 0, #020617 55%, #020617 100%);
-  color: #e5e7eb;
+  background: #ffffff;
+  color: #111827;
   line-height: 1.5;
 }
 
@@ -32,27 +32,27 @@ body {
 
 .logo-btn {
   background: transparent;
-  border: 1px solid rgba(148, 163, 184, 0.5);
+  border: 1px solid #d1d5db;
   border-radius: 999px;
   padding: 0.45rem 1rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   font-size: 0.85rem;
   text-transform: uppercase;
-  color: #e5e7eb;
+  color: #111827;
   cursor: pointer;
 }
 
 .logo-btn:hover {
-  background: rgba(15, 23, 42, 0.7);
+  background: #f9fafb;
 }
 
 /* HERO LAYOUT */
 
 .hero {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  min-height: 60vh;
+  min-height: 55vh;
   display: flex;
   flex-wrap: wrap;
   gap: 3rem;
@@ -67,11 +67,12 @@ body {
 .hero-content h1 {
   font-size: 2.4rem;
   margin-bottom: 0.8rem;
+  color: #1f2937;
 }
 
 .hero-subtitle {
   font-size: 1rem;
-  color: #e5e7eb;
+  color: #4b5563;
   max-width: 520px;
   margin-bottom: 1.25rem;
 }
@@ -83,7 +84,7 @@ body {
 
 .hero-bullets li {
   font-size: 0.95rem;
-  color: #d1d5db;
+  color: #374151;
   margin-bottom: 0.4rem;
   position: relative;
   padding-left: 1.3rem;
@@ -94,7 +95,7 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  color: #22c55e;
+  color: #f97316; /* orange bullets */
 }
 
 .hero-ctas {
@@ -114,28 +115,32 @@ body {
   font-weight: 500;
 }
 
+/* main CTA: orange with white text */
+
 .btn-primary {
-  background: #22c55e;
-  color: #052e16;
+  background: #ff7a00;
+  color: #ffffff;
 }
 
 .btn-primary:hover {
-  opacity: 0.95;
+  background: #f97316;
 }
 
+/* secondary CTA: white with gray border */
+
 .btn-secondary {
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid #4b5563;
-  color: #e5e7eb;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #111827;
 }
 
 .btn-secondary:hover {
-  background: #020617;
+  background: #f3f4f6;
 }
 
 .hero-footnote {
   font-size: 0.8rem;
-  color: #cbd5f5;
+  color: #6b7280;
 }
 
 /* HERO RIGHT PREVIEW */
@@ -150,10 +155,10 @@ body {
 .preview-card {
   width: 100%;
   max-width: 420px;
-  background: #f9fafb;
+  background: #ffffff;
   border-radius: 1.25rem;
   padding: 1.3rem 1.4rem;
-  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.65);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
   border: 1px solid #e5e7eb;
   color: #111827;
 }
@@ -162,9 +167,11 @@ body {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.11em;
-  color: #6b7280;
+  color: #9ca3af;
   margin-bottom: 0.5rem;
 }
+
+/* score row */
 
 .preview-score-row {
   display: flex;
@@ -177,9 +184,9 @@ body {
   width: 96px;
   height: 96px;
   border-radius: 999px;
-  background: #fef2e2;
+  background: #fff7ed;
   border: 5px solid #fb923c;
-  border-top-color: #facc15;
+  border-top-color: #f97316;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -189,7 +196,7 @@ body {
 .preview-score-number {
   font-size: 1.7rem;
   font-weight: 600;
-  color: #7c2d12;
+  color: #c2410c;
 }
 
 .preview-score-text {
@@ -199,14 +206,16 @@ body {
 
 .preview-score-copy {
   font-size: 0.85rem;
-  color: #1f2933;
+  color: #374151;
 }
 
 .preview-highlight {
   margin-top: 0.35rem;
-  color: #d97706;
+  color: #f97316;
   font-weight: 500;
 }
+
+/* breakdown chips */
 
 .preview-breakdown {
   display: grid;
@@ -216,7 +225,7 @@ body {
 }
 
 .preview-chip {
-  background: #f3f4f6;
+  background: #f9fafb;
   border-radius: 0.75rem;
   padding: 0.45rem 0.5rem;
   border: 1px solid #e5e7eb;
@@ -250,10 +259,12 @@ body {
   color: #2563eb;
 }
 
+/* checklist */
+
 .preview-checklist {
   list-style: none;
   font-size: 0.78rem;
-  color: #374151;
+  color: #4b5563;
 }
 
 .preview-checklist li {
@@ -266,23 +277,24 @@ body {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.2rem 1rem 1.5rem;
+  padding: 0.5rem 1rem 1.5rem;
   flex-wrap: wrap;
 }
 
 .nav-btn {
-  border: none;
-  padding: 0.5rem 1.1rem;
   border-radius: 999px;
   cursor: pointer;
-  background: #111827;
-  color: #e5e7eb;
   font-size: 0.9rem;
+  padding: 0.5rem 1.1rem;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  color: #111827;
 }
 
 .nav-btn.active {
-  background: #2563eb;
-  color: #f9fafb;
+  background: #ff7a00;
+  border-color: #ff7a00;
+  color: #ffffff;
 }
 
 /* MAIN CONTENT */
@@ -295,12 +307,12 @@ body {
 
 .tool-section {
   display: none;
-  background: #020617;
+  background: #ffffff;
   border-radius: 0.9rem;
   padding: 1.6rem;
   margin-bottom: 1.2rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-  border: 1px solid #111827;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+  border: 1px solid #e5e7eb;
 }
 
 .tool-section.active {
@@ -310,11 +322,12 @@ body {
 .tool-section h2 {
   font-size: 1.25rem;
   margin-bottom: 0.3rem;
+  color: #111827;
 }
 
 .tool-section p {
   font-size: 0.9rem;
-  color: #9ca3af;
+  color: #4b5563;
   margin-bottom: 1rem;
 }
 
@@ -324,9 +337,9 @@ textarea {
   width: 100%;
   min-height: 180px;
   border-radius: 0.5rem;
-  border: 1px solid #374151;
-  background: #020617;
-  color: #e5e7eb;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
   padding: 0.75rem;
   font-size: 0.9rem;
   resize: vertical;
@@ -347,6 +360,18 @@ button:hover {
   opacity: 0.9;
 }
 
+/* keep CTA colors set above */
+.btn-primary {
+  background: #ff7a00;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #111827;
+}
+
 /* LAYOUT HELPERS */
 
 .split {
@@ -365,10 +390,11 @@ button:hover {
 .results-card {
   margin-top: 1rem;
   border-radius: 0.75rem;
-  border: 1px solid #1f2937;
-  background: #020617;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
   padding: 1rem;
   font-size: 0.9rem;
+  color: #111827;
 }
 
 .results-card h3 {
@@ -396,18 +422,18 @@ button:hover {
 }
 
 .badge-good {
-  background: #16a34a22;
-  color: #4ade80;
+  background: #dcfce7;
+  color: #16a34a;
 }
 
 .badge-warn {
-  background: #f9731622;
+  background: #ffedd5;
   color: #f97316;
 }
 
 .badge-bad {
-  background: #dc262622;
-  color: #fca5a5;
+  background: #fee2e2;
+  color: #dc2626;
 }
 
 /* FOOTER */
@@ -416,5 +442,5 @@ button:hover {
   text-align: center;
   padding: 1rem;
   font-size: 0.8rem;
-  color: #9ca3af;
+  color: #6b7280;
 }
